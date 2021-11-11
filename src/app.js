@@ -15,14 +15,17 @@ const App = () => {
   return (
     <div>
       <UserProvider>
-        <Navbar />
-        <Switch>
-          <Route path="/signup" exact component={SignUp} />
-          <Route path="/login" exact component={Login} />
-          <PrivateRoute path="/" exact component={Home} />
-          <PrivateRoute path="/profile" exact component={Profile} />
-          <PrivateRoute path="/posts" exact component={Posts} />
-        </Switch>
+        <main className="content">
+          <Navbar />
+          <Switch>
+            <Route path="/signup" exact component={SignUp} />
+            <Route path="/login" exact component={Login} />
+            <PrivateRoute path="/" exact component={Home} />
+            <PrivateRoute path="/profile" exact component={Profile} />
+            <PrivateRoute path="/posts" exact component={Posts} />
+          </Switch>
+        </main>
+
         <Footer />
       </UserProvider>
     </div>

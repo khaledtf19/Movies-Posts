@@ -63,7 +63,7 @@ function Profile() {
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && (
         <div className="post__container">
-          <h1>Loading...</h1>
+          <h3>Loading...</h3>
         </div>
       )}
 

@@ -9,6 +9,8 @@ import logo from "../../img/IMDb_Logo_Square_Gold.png";
 
 const Home = () => {
   const [title, setTitle] = useState("");
+  const [year, setYear] = useState("");
+
   const [searchData, setSearchData] = useState({});
   const [searchIsDone, setSearchIsDone] = useState(false);
   const [user, setUser] = useContext(UserContext);
@@ -19,28 +21,27 @@ const Home = () => {
   const apiKey = process.env.REACT_APP_MY_API_KEY;
 
   const callApi = async (theTitle) => {
-    try {
-      await fetch(
-        `https://www.omdbapi.com/?apikey=${apiKey}&t=${theTitle}&plot=full`
-      )
-        .then((resp) => resp.json())
-        .then((data) => {
-          console.log(data);
-          setSearchData(data);
-          if (data.Response === "True") {
-            setSearchIsDone(true);
-          } else {
-            setSearchIsDone(false);
-            alert("can't search this ...");
-          }
-        })
-        .catch((ex) => {
-          if (ex) setSearchIsDone(false);
-          console.log(ex);
-        });
-    } catch (ex) {
-      console.log(`Error: ${ex.Error}`);
-    }
+    fetch(
+      `https://www.omdbapi.com/?apikey=${apiKey}&t=${theTitle}&y=${year}&plot=full`,
+      {
+        method: "POST",
+      }
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
+        setSearchData(data);
+        if (data.Response === "True") {
+          setSearchIsDone(true);
+        } else {
+          setSearchIsDone(false);
+          alert("can't search this ...");
+        }
+      })
+      .catch((ex) => {
+        if (ex) setSearchIsDone(false);
+        console.log(ex);
+      });
   };
 
   const handleSearch = () => {
@@ -67,11 +68,19 @@ const Home = () => {
   return (
     <div className="container">
       <div className="search__container">
-        <p>{user?.email}</p>
+        <p>Search</p>
+        <label>Movie Title</label>
         <input
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           className="input"
+          placeholder="Title"
+        />
+        <input
+          type="text"
+          onChange={(e) => setYear(e.target.value)}
+          className="input"
+          placeholder="Year"
         />
         <button
           className="primary__btn"
