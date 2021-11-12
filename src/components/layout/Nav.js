@@ -11,7 +11,7 @@ const Navbar = () => {
   window.onresize = function () {
     setSWidth(window.screen.width);
   };
-  if (sWidth > 425) {
+  if (sWidth > 430) {
     return (
       <div>
         <header>
@@ -97,7 +97,7 @@ const Navbar = () => {
                 <div>
                   <li className="nav__item">
                     <Link
-                      className="nav__link nav__button primary__btn"
+                      className="nav__link nav__button pr__btn"
                       to="/login"
                       onClick={() => {
                         signOut(auth);
@@ -110,17 +110,14 @@ const Navbar = () => {
               ) : (
                 <div>
                   <li className="nav__item">
-                    <Link
-                      to="/login"
-                      className="nav__link nav__button primary__btn"
-                    >
+                    <Link to="/login" className="nav__link nav__button pr__btn">
                       Login
                     </Link>
                   </li>
                   <li className="nav__item">
                     <Link
                       to="/signup"
-                      className="nav__link nav__button primary__btn"
+                      className="nav__link nav__button pr__btn"
                     >
                       Register
                     </Link>

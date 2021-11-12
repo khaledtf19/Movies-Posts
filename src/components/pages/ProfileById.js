@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { useParams } from "react-router-dom";
 import { db } from "../../firebase-config";
 import {
   collection,
   query,
+  where,
   updateDoc,
   doc,
   orderBy,
@@ -14,22 +15,27 @@ import { UserContext } from "../../context/userContext";
 import { Dropdown, Modal, Button, Form } from "react-bootstrap";
 import moreView from "../../img/moreView.png";
 
-function Profile() {
+function ProfileById() {
+  let { id } = useParams();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [update, setUpdate] = useState(false);
 
+  const [posts, setPosts] = useState(null);
   const [postId, setPostId] = useState("");
   const [postUpdate, setPostUpdate] = useState("");
 
   const [user, setUser] = useContext(UserContext);
-
-  const [posts, loading, error] = useCollectionData(
-    query(collection(db, "posts"), orderBy("timestamp", "desc")),
-    {
-      idField: "id",
-    }
+  const docRef = collection(db, "posts");
+  const q = query(
+    docRef,
+    where("user_id", "==", id),
+    orderBy("timestamp", "desc")
   );
+  const [value, loading, error] = useCollectionData(q, {
+    idField: "id",
+  });
 
   const imgClick = (url) => {
     window.open(url, "_blank");
@@ -58,6 +64,7 @@ function Profile() {
     const deletePost = await deleteDoc(docRef);
     setShow(false);
   };
+
   return (
     <div className="container">
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
@@ -67,17 +74,13 @@ function Profile() {
         </div>
       )}
 
-      {posts && (
+      {value && (
         <div>
-          {posts.map((post) => {
+          {value.map((post) => {
             return (
               <div key={post.id} className="post__container">
                 <div className="post__userInfo">
-                  <p className="post__email">
-                    <Link to={"id/" + post.user_id}>
-                      {post.made_by.user_email}
-                    </Link>
-                  </p>
+                  <p className="post__email">{post.made_by.user_email}</p>
                   <p className="post__name">{post.made_by.user_name}</p>
                 </div>
                 <div className="post__content">
@@ -174,4 +177,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default ProfileById;

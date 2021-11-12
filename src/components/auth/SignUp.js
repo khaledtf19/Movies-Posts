@@ -13,10 +13,15 @@ import { auth } from "../../firebase-config";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConf, setPasswordConf] = useState("");
+
   const [name, setName] = useState("");
   const history = useHistory();
 
   const handleSignUp = async () => {
+    if (password !== passwordConf) {
+      return alert("password conformation is invalid");
+    }
     const postsCollectionRef = collection(db, "users");
 
     try {
@@ -72,6 +77,15 @@ const SignUp = () => {
           placeholder="Password"
           onChange={(event) => {
             setPassword(event.target.value);
+          }}
+        />
+        <input
+          className="input"
+          name="password"
+          type="password"
+          placeholder="Password"
+          onChange={(event) => {
+            setPasswordConf(event.target.value);
           }}
         />
         <button onClick={handleSignUp} className="pr__btn">

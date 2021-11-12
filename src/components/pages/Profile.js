@@ -82,14 +82,16 @@ function Profile() {
                   <p className="post__name">{post.made_by.user_name}</p>
                 </div>
                 <div className="post__content">
-                  <p className="post__movieTitle">{post.movie_data.Title}</p>
+                  <h3 className="post__movieTitle">{post.movie_data.Title}</h3>
                   <img
                     className="post__moviePoster"
                     src={post.movie_data.Poster}
                     alt={post.movie_data.Title}
                     onClick={() => imgClick(post.movie_data.Poster)}
                   />
-                  <p>{post.post_content.content}</p>
+                  <p className="post__content__container">
+                    {post.post_content.content}
+                  </p>
                 </div>
                 {post.user_id === user?.uid ? (
                   <div className="div__dropdown">
@@ -105,10 +107,10 @@ function Profile() {
                           className="moreView"
                         />
                       </Dropdown.Toggle>
-                      <Dropdown.Menu id="dropdown__menu" variant="dark">
+                      <Dropdown.Menu className="dropdown__menu" variant="dark">
                         <Dropdown.Item
                           onClick={() => handleUpdate(post.id)}
-                          id="dropdown__item"
+                          className="dropdown__item"
                         >
                           Update
                         </Dropdown.Item>
@@ -116,7 +118,7 @@ function Profile() {
                         <Dropdown.Divider />
                         <Dropdown.Item
                           onClick={() => handleDelete(post.id)}
-                          id="dropdown__item"
+                          className="dropdown__item"
                         >
                           Delete
                         </Dropdown.Item>

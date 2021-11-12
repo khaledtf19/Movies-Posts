@@ -68,7 +68,7 @@ const Home = () => {
   return (
     <div className="container">
       <div className="search__container">
-        <p>Search</p>
+        <h3>Search</h3>
         <label>Movie Title</label>
         <input
           type="text"
@@ -98,7 +98,7 @@ const Home = () => {
               alt={searchData.Title}
               onClick={() => imgClick(searchData.Poster)}
             />
-            <h3>{searchData.Genre}</h3>
+            <h4>{searchData.Genre}</h4>
             <div className="imdb__container">
               <img src={logo} alt="" className="imdb_logo" />
               <h2 className="imdbRating"> {searchData.imdbRating}</h2>

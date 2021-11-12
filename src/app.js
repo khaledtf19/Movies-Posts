@@ -9,6 +9,8 @@ import SignUp from "./components/auth/SignUp";
 import Login from "./components/auth/Login";
 import Footer from "./components/layout/Footer";
 import PrivateRoute from "./ProtectedRoute";
+import ProfileById from "./components/pages/ProfileById";
+
 import { UserProvider } from "./context/userContext";
 
 const App = () => {
@@ -23,6 +25,7 @@ const App = () => {
             <PrivateRoute path="/" exact component={Home} />
             <PrivateRoute path="/profile" exact component={Profile} />
             <PrivateRoute path="/posts" exact component={Posts} />
+            <Route path="/id/:id" children={<ProfileById />} />
           </Switch>
         </main>
 

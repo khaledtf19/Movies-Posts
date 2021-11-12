@@ -27,8 +27,13 @@ const Login = () => {
     }
   };
   const signInWithGoogle = async () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+      history.push("/posts");
+    } catch (err) {
+      alert("error");
+    }
   };
 
   return (
