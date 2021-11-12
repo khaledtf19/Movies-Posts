@@ -74,7 +74,7 @@ const SignUp = () => {
             setPassword(event.target.value);
           }}
         />
-        <button onClick={handleSignUp} className="primary__btn">
+        <button onClick={handleSignUp} className="pr__btn">
           Sign Up
         </button>
       </div>

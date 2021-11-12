@@ -83,7 +83,7 @@ const Home = () => {
           placeholder="Year"
         />
         <button
-          className="primary__btn"
+          className="pr__btn"
           onClick={() => {
             handleSearch();
           }}
@@ -112,7 +112,7 @@ const Home = () => {
               }}
             />
             <button
-              className="primary__btn"
+              className="pr__btn"
               onClick={() => {
                 createPost();
               }}

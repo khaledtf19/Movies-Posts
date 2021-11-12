@@ -115,7 +115,7 @@ function Profile() {
 
                         <Dropdown.Divider />
                         <Dropdown.Item
-                          onClick={() => handleUpdate(post.id)}
+                          onClick={() => handleDelete(post.id)}
                           id="dropdown__item"
                         >
                           Delete

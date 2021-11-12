@@ -55,10 +55,10 @@ const Login = () => {
             setPassword(event.target.value);
           }}
         />
-        <button onClick={login} className="primary__btn">
+        <button onClick={login} className="pr__btn">
           Login
         </button>
-        <button onClick={signInWithGoogle} className="primary__btn">
+        <button onClick={signInWithGoogle} className="pr__btn">
           Login with google
         </button>
         <div>

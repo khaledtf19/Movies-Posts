@@ -39,7 +39,7 @@ const Navbar = () => {
                 <ul className="nav__list nav__list--btns">
                   <li className="nav__item">
                     <Link
-                      className="nav__link nav__button primary__btn"
+                      className="nav__link nav__button pr__btn"
                       to="/login"
                       onClick={() => {
                         signOut(auth);
@@ -52,17 +52,14 @@ const Navbar = () => {
               ) : (
                 <ul className="nav__list nav__list--btns">
                   <li className="nav__item">
-                    <Link
-                      to="/login"
-                      className="nav__link nav__button primary__btn"
-                    >
+                    <Link to="/login" className="nav__link nav__button pr__btn">
                       Login
                     </Link>
                   </li>
                   <li className="nav__item">
                     <Link
                       to="/signup"
-                      className="nav__link nav__button primary__btn"
+                      className="nav__link nav__button pr__btn"
                     >
                       Register
                     </Link>
