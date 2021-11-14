@@ -163,7 +163,8 @@ textarea {
 }
 
 /* posts */
-.post__container {
+.post__container,
+.comment__container {
   color: white;
   background-color: #343a40;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -177,8 +178,12 @@ textarea {
 .post__container + .post__container {
   margin-top: 10px;
 }
+.comment__container + .comment__container {
+  margin-top: 10px;
+}
 
-.post__userInfo {
+.post__userInfo,
+.comment__userInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -189,11 +194,13 @@ textarea {
 
   border-radius: 0px 0px 10px 10px;
 }
-.post__name {
+.post__name,
+.comment__name {
   text-transform: uppercase;
   margin-bottom: 10px;
 }
-.post__email {
+.post__email,
+.comment__email {
   font-size: 0.8rem;
   color: white;
   background-color: #333;
@@ -201,7 +208,8 @@ textarea {
   padding: 5px;
 }
 
-.post__content {
+.post__content,
+.comment__content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -318,7 +326,18 @@ textarea {
 .dropdown__item {
   cursor: pointer;
 }
-
+.input__comment {
+  width: 100%;
+  max-width: 300px;
+  margin: 10px;
+}
+.comment__btn {
+  margin: 10px;
+}
+.comment,
+.post__content__container {
+  margin: 10px 0;
+}
 @media (min-width: 430px) {
   body {
     font-size: 1rem;

@@ -7,7 +7,7 @@ import {
   sendEmailVerification,
 } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../../firebase-config";
+import { createUserProfileDocument, db } from "../../firebase-config";
 import { auth } from "../../firebase-config";
 
 const SignUp = () => {
@@ -39,6 +39,7 @@ const SignUp = () => {
           email: email,
         },
       });
+      createUserProfileDocument(userData, { name });
       history.push("/posts");
     } catch (err) {
       alert("Invalid Email");

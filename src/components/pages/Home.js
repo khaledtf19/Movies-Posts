@@ -14,7 +14,7 @@ const Home = () => {
   const [searchData, setSearchData] = useState({});
   const [searchIsDone, setSearchIsDone] = useState(false);
   const [user, setUser] = useContext(UserContext);
-  const [postContent, setPostContent] = useState([]);
+  const [postContent, setPostContent] = useState("");
 
   const history = useHistory();
   const postsCollectionRef = collection(db, "posts");

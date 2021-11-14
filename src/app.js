@@ -10,26 +10,31 @@ import Login from "./components/auth/Login";
 import Footer from "./components/layout/Footer";
 import PrivateRoute from "./ProtectedRoute";
 import ProfileById from "./components/pages/ProfileById";
+import PostPage from "./components/pages/PostPage";
 
 import { UserProvider } from "./context/userContext";
+import { PostsProvider } from "./context/postsContext";
 
 const App = () => {
   return (
     <div>
       <UserProvider>
-        <main className="content">
-          <Navbar />
-          <Switch>
-            <Route path="/signup" exact component={SignUp} />
-            <Route path="/login" exact component={Login} />
-            <PrivateRoute path="/" exact component={Home} />
-            <PrivateRoute path="/profile" exact component={Profile} />
-            <PrivateRoute path="/posts" exact component={Posts} />
-            <Route path="/id/:id" children={<ProfileById />} />
-          </Switch>
-        </main>
+        <PostsProvider>
+          <main className="content">
+            <Navbar />
+            <Switch>
+              <Route path="/signup" exact component={SignUp} />
+              <Route path="/login" exact component={Login} />
+              <PrivateRoute path="/" exact component={Home} />
+              <PrivateRoute path="/profile" exact component={Profile} />
+              <PrivateRoute path="/posts" exact component={Posts} />
+              <PrivateRoute path="/id/:id" children={<ProfileById />} />
+              <PrivateRoute path="/posts/:id" children={<PostPage />} />
+            </Switch>
+          </main>
 
-        <Footer />
+          <Footer />
+        </PostsProvider>
       </UserProvider>
     </div>
   );
